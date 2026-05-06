@@ -1,0 +1,57 @@
+graduation-pebble
+Copyright 2026 Hsiu-Chi Tsai and contributors.
+
+This product is released under the MIT License (see LICENSE).
+
+================================================================================
+THIRD-PARTY MARKS, ASSETS, AND ATTRIBUTIONS
+================================================================================
+
+1.  NYCU Arete Honors Program (百川學士學位學程) crest
+    -----------------------------------------------------------------
+    The Greek-temple-and-olive-wreath crest rendered procedurally in
+    `themes/nycu-arete/` is a code interpretation of the official
+    visual identity of the Arete Honors Program at National Yang Ming
+    Chiao Tung University (NYCU). The crest itself remains the
+    intellectual property of NYCU. This project uses the crest only
+    in the cohort-reference instance for educational, non-commercial,
+    graduation-memento purposes for NYCU Arete cohorts. Forks
+    targeting other institutions MUST replace this theme with their
+    own identity.
+
+2.  Anthropic Claude Code "Buddy" feature
+    -----------------------------------------------------------------
+    The owl mascot rendering takes inspiration from the "owl" species
+    (internal identifier IG8) found in the Anthropic Claude Code
+    Buddy feature (April Fools 2026 release, npm package
+    @anthropic-ai/claude-code). The original ASCII frames are not
+    embedded in this firmware; the owl is independently drawn using
+    procedural primitives. Reference to Anthropic / Claude is for
+    homage and inspiration only; this project is not affiliated with
+    or endorsed by Anthropic.
+
+3.  M5Unified, M5GFX, LovyanGFX
+    -----------------------------------------------------------------
+    Hardware abstraction libraries from M5Stack and lovyan03,
+    distributed under MIT and other compatible licenses. See each
+    library's LICENSE file when installed via PlatformIO.
+
+4.  efontTW, efontCN
+    -----------------------------------------------------------------
+    Embedded CJK fonts shipped with M5GFX, originally derived from the
+    efont project (https://github.com/skkode/efont). Used in
+    accordance with the efont license.
+
+================================================================================
+COHORT DATA & PHOTOS
+================================================================================
+
+When you fork this project for your own cohort:
+
+  * Real student photos, audio recordings, and personal messages
+    MUST NOT be committed to a public repository. Use the patterns
+    in `.gitignore` (cohorts/*/personalization.h, /avatars/, /voice/).
+  * Replace `themes/nycu-arete/` with your institution's own theme
+    (see docs/creating-a-theme.md).
+  * Rename `cohorts/nycu-arete-115/` to your own cohort identifier
+    (see docs/creating-a-cohort.md).

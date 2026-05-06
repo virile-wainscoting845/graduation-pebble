@@ -1,0 +1,57 @@
+# ============================================================================
+#  graduation-pebble — gitignore
+# ============================================================================
+
+# PlatformIO
+.pio/
+.cache/
+.pioenvs/
+.piolibdeps/
+*.elf
+*.bin
+!cohorts/**/*.bin
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Iteration logs
+*.log
+flash*.log
+build*.log
+upload*.log
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python tooling
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Per-cohort private data (NEVER commit real student data)
+cohorts/*/personalization.h
+!cohorts/*/personalization.h.example
+cohorts/*/roster.csv
+cohorts/*/avatars/
+cohorts/*/voice/
+tools/build/
+tools/output/
+
+# Secrets
+.env
+.env.local
+secrets.json
+*.pem
+*.key

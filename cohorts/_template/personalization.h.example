@@ -1,0 +1,76 @@
+// =============================================================================
+//  Example personalization data — copy to `personalization.h` and fill in.
+//
+//  This file shows the schema. Real student data MUST NOT be committed to a
+//  public repository. The Phase 1 toolchain generates one of these per device
+//  from a private CSV roster and uploads it during batch flashing.
+// =============================================================================
+#pragma once
+#include <stdint.h>
+
+namespace cohort {
+
+// Identity (visible on device)
+constexpr const char* OWNER_NAME_TW  = "Sample Student";
+constexpr const char* OWNER_NAME_EN  = "Sample Student";
+constexpr const char* OWNER_ID       = "00000000";
+
+// Cohort metadata
+constexpr const char* COHORT_LABEL   = "Sample Cohort 20XX";
+constexpr const char* PROGRAM_TW     = "Sample Program";
+constexpr const char* PROGRAM_EN     = "Sample Program";
+constexpr const char* INSTITUTION    = "Sample University";
+
+// Time anchors (days relative to firmware boot reference date)
+constexpr uint32_t ENROLL_DAYS_BEFORE_BOOT = 1000;     // ~3 years prior
+constexpr uint32_t GRAD_DAYS_AFTER_BOOT    = 30;       // 30 days from boot to ceremony
+constexpr uint32_t CAPSULE_DAYS_AFTER_BOOT = 30 + 365 * 5;   // 5 years post-grad
+
+// Five interdisciplinary keywords (#tag form)
+constexpr const char* KEYWORDS[5] = {
+    "#sample",
+    "#interdisciplinary",
+    "#path",
+    "#here",
+    "#five",
+};
+
+// 4 year recap pages + 1 closing page
+struct StoryPage {
+    const char* title_tw;
+    const char* year_label;
+    const char* date_str;
+    const char* caption;
+    uint16_t    accent_color;   // RGB565
+};
+
+constexpr StoryPage STORY[5] = {
+    { "Year 1 Title", "Year 1", "20XX.09",
+      "Year 1 caption — what this year felt like.",
+      0xFC68 /* autumn */ },
+    { "Year 2 Title", "Year 2", "20XX.07",
+      "Year 2 caption.",
+      0x6F6D /* summer */ },
+    { "Year 3 Title", "Year 3", "20XX.04",
+      "Year 3 caption.",
+      0xFB9A /* spring */ },
+    { "Year 4 Title", "Year 4", "20XX.01",
+      "Year 4 caption.",
+      0x9999 /* winter */ },
+    { "Closing Title", "Closing", "20XX.MM.DD",
+      "A message to your past self.",
+      0xFE60 /* gold */ },
+};
+
+// Time capsule
+constexpr const char* CAPSULE_PREVIEW_TW = "To my future self...";
+constexpr const char* CAPSULE_UNLOCK_DATE = "20XX-MM-DD";
+
+// Cohort name list — used for radar simulation in Phase 0;
+// real ESP-NOW radar (Phase 2) will discover these dynamically.
+constexpr const char* COHORT_NAMES[10] = {
+    "Classmate 1", "Classmate 2", "Classmate 3", "Classmate 4", "Classmate 5",
+    "Classmate 6", "Classmate 7", "Classmate 8", "Classmate 9", "Classmate 10",
+};
+
+}  // namespace cohort

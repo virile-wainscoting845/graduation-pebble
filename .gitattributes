@@ -1,0 +1,39 @@
+# Normalize line endings
+* text=auto eol=lf
+
+# Source code (LF)
+*.cpp text eol=lf
+*.c   text eol=lf
+*.h   text eol=lf
+*.hpp text eol=lf
+*.py  text eol=lf
+*.md  text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js  text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.editorconfig text eol=lf
+LICENSE text eol=lf
+
+# Windows-only files
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binaries
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.bin  binary
+*.elf  binary
+*.wav  binary
+*.mp3  binary
+*.m4a  binary
+*.zip  binary
+*.7z   binary
